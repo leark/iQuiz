@@ -41,7 +41,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.43246344174795565" green="0.725036088985623" blue="0.92926415044409005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.43509267495766346" green="0.73300040376761344" blue="0.94701431236118849" alpha="0.61988336267605637" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descLabel" destination="cid-ef-3VZ" id="sh7-9Q-Q8o"/>
