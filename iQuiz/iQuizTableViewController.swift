@@ -52,7 +52,8 @@ class iQuizTableViewController: UITableViewController {
         
         return cell
     }
- 
+
+    // part 2 of iquiz
 
     /*
     // Override to support conditional editing of the table view.
