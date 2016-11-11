@@ -1,37 +1,29 @@
 //
-//  iQuizNavViewController.swift
+//  QuestionViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/9/16.
+//  Created by iGuest on 11/10/16.
 //  Copyright © 2016 iGuest. All rights reserved.
 //
 
 import UIKit
 
-class iQuizNavViewController: UINavigationController {
+class QuestionViewController: UIViewController {
 
-    @IBOutlet weak var settings: UIButton!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        questionLabel.text = "THIS IS A QUESTION FIELD"
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    @IBAction func openSettings(_ sender: AnyObject) {
-        let settingsController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        settingsController.addAction(defaultAction)
-        
-        present(settingsController, animated: true, completion: nil)
     }
     
 

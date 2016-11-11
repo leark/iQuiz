@@ -1,23 +1,18 @@
 //
-//  iQuizTableViewController.swift
+//  AnswersTableViewController.swift
 //  iQuiz
 //
-//  Created by iGuest on 11/9/16.
+//  Created by iGuest on 11/10/16.
 //  Copyright © 2016 iGuest. All rights reserved.
 //
 
 import UIKit
 
-class iQuizTableViewController: UITableViewController {
+class AnswersTableViewController: UITableViewController {
 
-    let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
-    let desc = ["You get to do MATH!", "Are you a Marvel buff?", "SCIENCE!!!"]
-    let icons = [#imageLiteral(resourceName: "math"), #imageLiteral(resourceName: "marvel"), #imageLiteral(resourceName: "science")]
-    @IBOutlet weak var settings: UIBarButtonItem!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -39,32 +34,18 @@ class iQuizTableViewController: UITableViewController {
 */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return subjects.count
+        return 0
     }
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "iQuizCell", for: indexPath) as! iQuizTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
 
-        cell.questionLabel.text = subjects[indexPath.row]
-        cell.descLabel.text = desc[indexPath.row]
-        cell.iconView.image = icons[indexPath.row]
-        
         return cell
     }
-    
-    @IBAction func openSettings(_ sender: AnyObject) {
-        let settingsController = UIAlertController(title: "Settings go here", message: "", preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        settingsController.addAction(defaultAction)
-        
-        present(settingsController, animated: true, completion: nil)
-    }
-
-    // part 2 of iquiz
+    */
 
     /*
     // Override to support conditional editing of the table view.
