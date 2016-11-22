@@ -13,6 +13,12 @@ class iQuizTableViewController: UITableViewController {
     let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
     let desc = ["You get to do MATH!", "Are you a Marvel buff?", "SCIENCE!!!"]
     let icons = [#imageLiteral(resourceName: "math"), #imageLiteral(resourceName: "marvel"), #imageLiteral(resourceName: "science")]
+    let questions = ["What is 3 + 3", "What is 5 * 4"]
+    let choices = [["1", "2", "6", "4"], ["5", "20", "7", "8"]]
+    let answers = ["3", "2"]
+    var questionPointer = 0
+    var correctCount = 0
+    
     @IBOutlet weak var settings: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -25,6 +31,15 @@ class iQuizTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! QuestionViewController
+        controller.questions = questions
+        controller.choices = choices
+        controller.answers = answers
+        controller.questionPointer = questionPointer
+        controller.correctCount = correctCount
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

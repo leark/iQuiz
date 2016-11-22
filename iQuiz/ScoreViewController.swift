@@ -10,6 +10,12 @@ import UIKit
 
 class ScoreViewController: UIViewController {
 
+    var questions = [""]
+    var choices = [[""]]
+    var answers = [""]
+    var questionPointer = 0
+    var correctCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
