@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Subjects-->
+        <!--Home-->
         <scene sceneID="ac0-zw-jyH">
             <objects>
                 <tableViewController id="PKM-Y0-f31" customClass="iQuizTableViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                             <outlet property="delegate" destination="PKM-Y0-f31" id="zpA-97-Voq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Subjects" id="zH6-N8-1HW">
+                    <navigationItem key="navigationItem" title="Home" id="zH6-N8-1HW">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="iZJ-bi-jkX">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jxd-0h-WsI">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -97,14 +97,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <segue destination="3Jf-LY-GrY" kind="show" id="KnK-ae-Wrh"/>
+                                    <action selector="submit:" destination="Koo-Ox-EEL" eventType="touchUpInside" id="NkF-Sg-pMn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRs-yI-gLe">
                                 <frame key="frameInset" minX="65" minY="305" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Q1"/>
+                                <state key="normal" title="1"/>
                                 <connections>
                                     <action selector="selectOption:" destination="Koo-Ox-EEL" eventType="touchUpInside" id="Zn3-f9-DdT"/>
                                 </connections>
@@ -113,19 +113,28 @@
                                 <frame key="frameInset" minX="65" minY="343" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Q2"/>
+                                <state key="normal" title="2"/>
+                                <connections>
+                                    <action selector="selectOption:" destination="Koo-Ox-EEL" eventType="touchUpInside" id="8rC-GB-E8l"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9M-xc-AHG">
                                 <frame key="frameInset" minX="65" minY="381" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Q3"/>
+                                <state key="normal" title="3"/>
+                                <connections>
+                                    <action selector="selectOption:" destination="Koo-Ox-EEL" eventType="touchUpInside" id="qGY-fx-fKA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVs-iT-Y2o">
                                 <frame key="frameInset" minX="65" minY="419" width="245" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Q4"/>
+                                <state key="normal" title="4"/>
+                                <connections>
+                                    <action selector="selectOption:" destination="Koo-Ox-EEL" eventType="touchUpInside" id="hcP-cI-5NB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,6 +148,7 @@
                         <outlet property="q3" destination="V9M-xc-AHG" id="yuR-8x-3eH"/>
                         <outlet property="q4" destination="oVs-iT-Y2o" id="1Yl-Bf-gXO"/>
                         <outlet property="questionLabel" destination="QHJ-eC-lop" id="gbT-VM-dXZ"/>
+                        <segue destination="3Jf-LY-GrY" kind="show" identifier="AnswerView" id="mVk-iB-1G4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRQ-Wp-oIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,24 +167,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct or not" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wa-oO-y0f">
-                                <frame key="frameInset" minX="133" minY="190" width="108" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct or not" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wa-oO-y0f">
+                                <frame key="frameInset" minX="72" minY="190" width="230" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The correction option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89D-dN-fmS">
-                                <frame key="frameInset" minX="105" minY="323" width="165" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The correction option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89D-dN-fmS">
+                                <frame key="frameInset" minX="105" minY="279" width="165" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAw-dg-7WL">
-                                <frame key="frameInset" minX="142" minY="484" width="91" height="30"/>
+                                <frame key="frameInset" minX="124" minY="484" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next or Done"/>
+                                <state key="normal" title="Next or Finished"/>
                                 <connections>
                                     <action selector="toNextScore:" destination="3Jf-LY-GrY" eventType="touchUpInside" id="SIP-fj-ZF2"/>
                                 </connections>
@@ -183,10 +193,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="correctLabel" destination="89D-dN-fmS" id="c1Z-Q9-boQ"/>
+                        <outlet property="nextButton" destination="YAw-dg-7WL" id="zWr-Ng-a80"/>
+                        <outlet property="resultLabel" destination="4wa-oO-y0f" id="bTV-Py-V0t"/>
+                        <segue destination="Koo-Ox-EEL" kind="show" identifier="QuestionView" id="Ziq-32-Re0"/>
+                        <segue destination="Oow-hI-NbI" kind="show" identifier="ScoreView" id="hE8-o5-C3R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haF-yY-8wQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2369" y="116"/>
+            <point key="canvasLocation" x="2368.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--Score-->
         <scene sceneID="iDp-bP-1TQ">
@@ -207,8 +224,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You got X/Y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFt-mV-wy8">
-                                <frame key="frameInset" minX="142" minY="323" width="90" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You got X/Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFt-mV-wy8">
+                                <frame key="frameInset" minX="73" minY="323" width="230" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -218,14 +235,20 @@
                                 <frame key="frameInset" minX="137" minY="488" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go back home"/>
+                                <connections>
+                                    <segue destination="LOc-pK-P2Q" kind="showDetail" action="showViewController:sender:" id="mcL-1i-tSC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="AFt-mV-wy8" id="vO0-y3-5pI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTA-gS-FHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3065" y="116"/>
+            <point key="canvasLocation" x="3064.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Bn-C8-eRN">
@@ -244,4 +267,7 @@
             <point key="canvasLocation" x="330" y="116"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ziq-32-Re0"/>
+    </inferredMetricsTieBreakers>
 </document>

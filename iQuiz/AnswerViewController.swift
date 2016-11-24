@@ -15,13 +15,35 @@ class AnswerViewController: UIViewController {
     var answers = [""]
     var questionPointer = 0
     var correctCount = 0
+    var selected = "0"
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // print(self.navigationController!.viewControllers.count)
+        //print(self.navigationController?.viewControllers.count)
+        
+        //self.navigationController?.viewControllers.removeLast()
         
         
+        if (answers[questionPointer] == selected) {
+            resultLabel.text = "You are Correct!"
+            correctCount += 1
+        } else {
+            resultLabel.text = "You are Wrong"
+        }
+        correctLabel.text = "Answer is: \(answers[questionPointer])"
+        
+        if (questionPointer < questions.count - 1) {
+            nextButton.setTitle("Next", for: UIControlState.normal)
+        } else {
+            nextButton.setTitle("Finished", for: UIControlState.normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,34 +52,27 @@ class AnswerViewController: UIViewController {
     }
     
     @IBAction func toNextScore(_ sender: AnyObject) {
-        
-        //if more questions
         if (questionPointer < questions.count - 1) {
-// https://itunes.apple.com/us/podcast/cs193p-student-final-projects/id395605774?i=90218598
-// http://stackoverflow.com/questions/6164525/self-navigationcontroller-pushviewcontroller-not-working
-//            let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("questionView") as QuestionViewController
-            
-//            let question = QuestionViewController()
-            // navigationController?.pushViewController(nextViewController, animated: true)
-            questionPointer = questionPointer + 1
+            questionPointer += 1
+            performSegue(withIdentifier: "QuestionView", sender: self)
         } else {
-            let score = ScoreViewController()
-            // self.show(score, sender: self)
-            navigationController?.pushViewController(score, animated: true)
+            performSegue(withIdentifier: "ScoreView", sender: self)
         }
-        
-        //if done with all games
-        
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as! ScoreViewController
-        controller.questions = questions
-        controller.choices = choices
-        controller.answers = answers
-        controller.questionPointer = questionPointer
-        controller.correctCount = correctCount
+        if (segue.identifier == "ScoreView") {
+            let controller = segue.destination as! ScoreViewController
+            controller.correctCount = correctCount
+            controller.numQuestions = questions.count
+        } else {
+            let controller = segue.destination as! QuestionViewController
+            controller.questions = questions
+            controller.choices = choices
+            controller.answers = answers
+            controller.questionPointer = questionPointer
+            controller.correctCount = correctCount
+        }
     }
     
     /*
@@ -71,3 +86,11 @@ class AnswerViewController: UIViewController {
     */
 
 }
+
+
+// https://itunes.apple.com/us/podcast/cs193p-student-final-projects/id395605774?i=90218598
+// http://stackoverflow.com/questions/6164525/self-navigationcontroller-pushviewcontroller-not-working
+//            let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("questionView") as QuestionViewController
+
+//            let question = QuestionViewController()
+// navigationController?.pushViewController(nextViewController, animated: true)

@@ -16,6 +16,7 @@ class QuestionViewController: UIViewController {
     var answers = [""]
     var questionPointer = 0
     var correctCount = 0
+    var selected = "0"
 
     @IBOutlet weak var q1: UIButton!
     @IBOutlet weak var q2: UIButton!
@@ -27,19 +28,29 @@ class QuestionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        questionLabel.text = questions[0]
-        questions.remove(at: 0)
+        questionLabel.text = questions[questionPointer]
         
         var choiceButtons = [q1, q2, q3, q4]
         for index in 0...3 {
-            choiceButtons[index]?.setTitle(choices[0][index], for: UIControlState.normal)
+            choiceButtons[index]?.setTitle(choices[questionPointer][index], for: UIControlState.normal)
         }
-        
+        // print(self.navigationController!.viewControllers.count)
     }
     
     // http://stackoverflow.com/questions/24844865/keep-uibutton-selected-highlighted-after-touch-in-swift
     @IBAction func selectOption(_ sender: AnyObject) {
+        selected = sender.currentTitle!!
         
+    }
+    
+    @IBAction func submit(_ sender: AnyObject) {
+        if (selected != "0") {
+            performSegue(withIdentifier: "AnswerView", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "Warning", message: "Must select an option", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,7 +65,9 @@ class QuestionViewController: UIViewController {
         controller.answers = answers
         controller.questionPointer = questionPointer
         controller.correctCount = correctCount
+        controller.selected = selected
     }
+    
     
     /*
     // MARK: - Navigation

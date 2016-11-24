@@ -8,6 +8,14 @@
 
 import UIKit
 
+class questionList {
+    var questions = [""]
+    var choices = [[""]]
+    var answers = [""]
+    var questionPointer = 0
+    var correctCount = 0
+}
+
 class iQuizTableViewController: UITableViewController {
 
     let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
@@ -15,7 +23,7 @@ class iQuizTableViewController: UITableViewController {
     let icons = [#imageLiteral(resourceName: "math"), #imageLiteral(resourceName: "marvel"), #imageLiteral(resourceName: "science")]
     let questions = ["What is 3 + 3", "What is 5 * 4"]
     let choices = [["1", "2", "6", "4"], ["5", "20", "7", "8"]]
-    let answers = ["3", "2"]
+    let answers = ["6", "20"]
     var questionPointer = 0
     var correctCount = 0
     

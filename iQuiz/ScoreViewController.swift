@@ -10,16 +10,16 @@ import UIKit
 
 class ScoreViewController: UIViewController {
 
-    var questions = [""]
-    var choices = [[""]]
-    var answers = [""]
-    var questionPointer = 0
+    var numQuestions = 0
     var correctCount = 0
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        scoreLabel.text = "You got \(correctCount) out of \(numQuestions)!"
     }
 
     override func didReceiveMemoryWarning() {
